@@ -18,7 +18,7 @@ frontPath="$localPath/tesis-front"
 # Se crea la base de datos con persistencia
 #################################################################################################
 cd "$localPath"
-sudo docker-compose up -d
+docker-compose up -d
 
 
 #################################################################################################
@@ -131,6 +131,32 @@ sudo docker build $frontPath -t front-img
 echo "Imagen de front creada"
 
 echo "Se han creado todas las imagenes"
+
+#################################################################################################
+# Se borran los contenedores si existen
+#################################################################################################
+
+echo "Borrando contenedores"
+
+sudo docker stop base-ctr
+sudo docker rm base-ctr
+echo "Contenedor de base borrado"
+
+sudo docker stop jira-ctr
+sudo docker rm jira-ctr
+echo "Contenedor de jira borrado"
+
+sudo docker stop jenkins-ctr
+sudo docker rm jenkins-ctr
+echo "Contenedor de jenkins borrado"
+
+sudo docker stop github-ctr
+sudo docker rm github-ctr
+echo "Contenedor de github borrado"
+
+sudo docker stop front-ctr
+sudo docker rm front-ctr
+echo "Contenedor de front borrado"
 
 #################################################################################################
 # Se corren los contenedores
