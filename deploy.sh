@@ -18,7 +18,7 @@ frontPath="$localPath/tesis-front"
 # Se crea la base de datos con persistencia
 #################################################################################################
 cd "$localPath"
-docker-compose up -d
+docker-compose up -d mongodb
 
 
 #################################################################################################
@@ -103,7 +103,7 @@ cp "$localPath/.env-front" "$frontPath/.env"
 rm temp.conf
 touch temp.conf
 set -a
-. "$frontPath/.env" && (envsubst '${HOST_IP} ${BASE_PORT}' < "$frontPath/nginx.conf") >> temp.conf
+. "$frontPath/.env" && (envsubst '${BASE_PORT}' < "$frontPath/nginx.conf") >> temp.conf
 mv temp.conf "$frontPath/nginx.conf"
 set +a
 echo "Archivo nginx.conf final: "

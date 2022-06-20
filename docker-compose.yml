@@ -8,7 +8,7 @@ services:
       - PGID=1000
     volumes:
       - /mongodb/database:/data/db
-      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./mongo-init.js:/mongo-init.js
     ports:
       - 27017:27017
     restart: unless-stopped
