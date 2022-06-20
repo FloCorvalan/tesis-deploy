@@ -18,7 +18,7 @@ frontPath="$localPath/tesis-front"
 # Se crea la base de datos con persistencia
 #################################################################################################
 cd "$localPath"
-docker-compose up -d mongodb
+sudo docker-compose up -d mongodb
 
 
 #################################################################################################
