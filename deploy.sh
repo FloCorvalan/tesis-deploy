@@ -115,6 +115,14 @@ cp "$localPath/.env-github" "$githubPath/.env"
 
 touch "$frontPath/.env"
 cp "$localPath/.env-front" "$frontPath/.env"
+rm temp.conf
+touch temp.conf
+set -a
+. "$frontPath/.env" && (envsubst < "$frontPath/nginx.conf") >> temp.conf
+mv temp.conf "$frontPath/nginx.conf"
+set +a
+echo "Archivo nginx.conf final: "
+cat "$frontPath/nginx.conf"
 
 echo "Archivos .env copiados"
 
