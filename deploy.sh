@@ -22,76 +22,61 @@ docker-compose up -d
 
 
 #################################################################################################
-# Se revisa si los repositorios existen, si existen se actualizan (pull) sino se clonan
+# Se revisa si los repositorios existen, si existen se borran y se clonan, sino solo se clonan
 #################################################################################################
 
 # 1 - base
 if [ -d "$basePath" ]; then
            
-    echo "se encontro la carpeta $basePath, se actualiza"    
-    echo "comando: cd $basePath"
-    cd "$basePath"
-    echo "comando: git pull origin main"
-    git pull origin main        
+    echo "Se encontro la carpeta $basePath, se borra"    
+    sudo rm -r "$basePath"
+    git clone $baseRep
 else
-    echo "se clona $baseRep"
-    echo "comando: git clone $baseRep"
+    echo "Se clona solamente $baseRep"
     git clone $baseRep
 fi
 
 # 2 - jira
 if [ -d "$jiraPath" ]; then
            
-    echo "se encontro la carpeta $jiraPath, se actualiza"    
-    echo "comando: cd $jiraPath"
-    cd "$jiraPath"
-    echo "comando: git pull origin main"
-    git pull origin main        
+    echo "Se encontro la carpeta $jiraPath, se borra"    
+    sudo rm -r "$jiraPath"
+    git clone $jiraRep
 else
-    echo "se clona $jiraRep"
-    echo "comando: git clone $jiraRep"
+    echo "Se clona solamente $jiraRep"
     git clone $jiraRep
 fi
 
 # 3 - jenkins
 if [ -d "$jenkinsPath" ]; then
            
-    echo "se encontro la carpeta $jenkinsPath, se actualiza"    
-    echo "comando: cd $jenkinsPath"
-    cd "$jenkinsPath"
-    echo "comando: git pull origin main"
-    git pull origin main        
+    echo "Se encontro la carpeta $jenkinsPath, se borra"    
+    sudo rm -r "$jenkinsPath"
+    git clone $jenkinsRep
 else
-    echo "se clona $jenkinsRep"
-    echo "comando: git clone $jenkinsRep"
+    echo "Se clona solamente $jenkinsRep"
     git clone $jenkinsRep
 fi
 
 # 4 - github
 if [ -d "$githubPath" ]; then
            
-    echo "se encontro la carpeta $githubPath, se actualiza"    
-    echo "comando: cd $githubPath"
-    cd "$githubPath"
-    echo "comando: git pull origin main"
-    git pull origin main        
+    echo "Se encontro la carpeta $githubPath, se actualiza"    
+    sudo rm -r "$githubPath"
+    git clone $githubRep
 else
-    echo "se clona $githubRep"
-    echo "comando: git clone $githubRep"
+    echo "Se clona solamente $githubRep"
     git clone $githubRep
 fi
 
 # 5 - front
 if [ -d "$frontPath" ]; then
            
-    echo "se encontro la carpeta $frontPath, se actualiza"    
-    echo "comando: cd $frontPath"
-    cd "$frontPath"
-    echo "comando: git pull origin main"
-    git pull origin main        
+    echo "Se encontro la carpeta $frontPath, se actualiza"    
+    sudo rm -r "$frontPath"
+    git clone $frontRep   
 else
-    echo "se clona $frontRep"
-    echo "comando: git clone $frontRep"
+    echo "Se clona solamente $frontRep"
     git clone $frontRep
 fi
 
