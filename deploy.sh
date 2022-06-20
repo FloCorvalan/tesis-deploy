@@ -118,7 +118,7 @@ cp "$localPath/.env-front" "$frontPath/.env"
 rm temp.conf
 touch temp.conf
 set -a
-. "$frontPath/.env" && (envsubst < "$frontPath/nginx.conf") >> temp.conf
+. "$frontPath/.env" && (envsubst '${HOST_IP} ${BASE_PORT}' < "$frontPath/nginx.conf") >> temp.conf
 mv temp.conf "$frontPath/nginx.conf"
 set +a
 echo "Archivo nginx.conf final: "
