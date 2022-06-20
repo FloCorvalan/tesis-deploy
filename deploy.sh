@@ -101,10 +101,19 @@ fi
 
 echo "Copiando archivos .env..."
 
+touch "$basePath/.env"
 cp "$localPath/.env-base" "$basePath/.env"
+
+touch "$jiraPath/.env"
 cp "$localPath/.env-jira" "$jiraPath/.env"
+
+touch "$jenkinsPath/.env"
 cp "$localPath/.env-jenkins" "$jenkinsPath/.env"
+
+touch "$githubPath/.env"
 cp "$localPath/.env-github" "$githubPath/.env"
+
+touch "$frontPath/.env"
 cp "$localPath/.env-front" "$frontPath/.env"
 
 echo "Archivos .env copiados"
