@@ -2,6 +2,7 @@
 #################################################################################################
 # Se asignan las variables
 #################################################################################################
+volumePath="$PWD/base-ctr-data"
 localPath=$PWD
 baseRep="https://github.com/FloCorvalan/tesis-back-flask-base"
 basePath="$localPath/tesis-back-flask-base"
@@ -13,6 +14,15 @@ githubRep="https://github.com/FloCorvalan/tesis-back-flask-gh"
 githubPath="$localPath/tesis-back-flask-gh" 
 frontRep="https://github.com/FloCorvalan/tesis-front"
 frontPath="$localPath/tesis-front"
+
+## Se crea la carptea /base-ctr-data si no existe
+cd "$localPath"
+if [ -d "$volumePath" ]; then
+    echo "No se crea la carpeta /base-ctr-data porque existe"
+else
+    echo "Se crea la carpeta /base-ctr-data"
+    mkdir base-ctr-data
+fi
 
 #################################################################################################
 # Se crea la base de datos con persistencia
@@ -166,7 +176,7 @@ echo "Contenedor de front borrado"
 
 echo "Ejecutando contenedores..."
 
-sudo docker run --network host -d --name base-ctr base-img
+sudo docker run --network host -d -v $volumePath:/app/static/img --name base-ctr base-img
 echo "Contenedor de base creado"
 
 sudo docker run --network host -d --name jira-ctr jira-img
