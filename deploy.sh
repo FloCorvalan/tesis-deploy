@@ -176,19 +176,19 @@ echo "Contenedor de front borrado"
 
 echo "Ejecutando contenedores..."
 
-sudo docker run --network host -d -v $volumePath:/app/static/img --name base-ctr base-img
+sudo docker run --restart unless-stopped --network host -d -v $volumePath:/app/static/img --name base-ctr base-img
 echo "Contenedor de base creado"
 
-sudo docker run --network host -d --name jira-ctr jira-img
+sudo docker run --restart unless-stopped --network host -d --name jira-ctr jira-img
 echo "Contenedor de jira creado"
 
-sudo docker run --network host -d --name jenkins-ctr jenkins-img
+sudo docker run --restart unless-stopped --network host -d --name jenkins-ctr jenkins-img
 echo "Contenedor de jenkins creado"
 
-sudo docker run --network host -d --name github-ctr github-img
+sudo docker run --restart unless-stopped --network host -d --name github-ctr github-img
 echo "Contenedor de github creado"
 
-sudo docker run --network host -d --name front-ctr front-img
+sudo docker run --restart unless-stopped --network host -d --name front-ctr front-img
 echo "Contenedor de front creado"
 
 echo "Se han ejecutado todos los contenedores"
