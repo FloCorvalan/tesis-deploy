@@ -6,9 +6,14 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=m0rf1
+      - MONGO_INITDB_ROOT_PASSWORD=4dm1n!
+      - MONGO_INITDB_DATABASE=prueba
     volumes:
       - /mongodb/database:/data/db
       - ./mongo-init.js:/mongo-init.js
+      - ./mongod.conf:/etc/mongod.conf
     ports:
       - 27017:27017
     restart: unless-stopped
